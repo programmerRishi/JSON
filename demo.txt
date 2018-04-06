@@ -1,0 +1,3 @@
+{
+"array": [ "rishi" , 1294 , "programming" ]
+}

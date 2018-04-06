@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Jquery Ajax</title>
+    <style>
+  button{
+  height: '100px';
+  width: '100px';
+
+  }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    var data;
+    $(document).ready(function(){
+    $('button').click(function(){
+      // $("div").load("cd.xml",function(response, status){
+      //      if (status == "success"){
+      //          $("div").html("<ol></ol>");
+      //          $(response).find("artist").each(function(){
+      //              var item_text = $(this).text();
+      //              $('<li></li>').html(item_text).appendTo('ol');
+      //          });
+       $.ajax({
+      url:'cd.xml',
+      success:function(response,status) {
+        console.log(response);
+
+          $(response).find("ARTIST").each(function(){
+            var item_text =   $('<li></li>').html($(this).text());
+            console.log(item_text);
+          $('#list').append(item_text);
+            });
+        // $(result).find('artist').each(function (i,element) {
+        //      $('div').html($(element).text())
+          // list='<li></li>';
+          // $(list).html($(element).text());
+          // $('ol').append(list);
+        // });
+      }
+    });
+
+  });
+
+    });
+    </script>
+  </head>
+
+  <body>
+    <h1>This is an Ajax page</h1>
+  <button type="button" name="Click to CD " >Click here </button>
+    <div id="di">
+    <ol id="list">
+
+    </ol>
+    </div>
+  </body>
+</html>
